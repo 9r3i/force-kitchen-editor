@@ -1,0 +1,204 @@
+/* alpha.css */
+/* load font */
+@font-face{font-family:'Alpha Lite';src:url('alpha.ttf');}
+/* reset */
+*,*:before,*:after{
+  -webkit-box-sizing:border-box;
+  -moz-box-sizing:border-box;
+  -ms-box-sizing:border-box;
+  -o-box-sizing:border-box;
+  box-sizing:border-box;
+}
+/* ----- ALPHA EDITOR ----- */
+.alpha-editor,.alpha-editor-tool,.alpha-editor-tool-button,.alpha-editor-preview,.alpha-editor-textarea,.alpha-cursor-blink,.alpha-cursor-selection{
+  margin:0px !important;
+  font-family:'Alpha Lite' !important;
+  font-size:16px !important;
+  font-weight:normal !important;
+  font-style:normal !important;
+  color:#333 !important;
+  line-height:16px !important;
+}
+.alpha-editor:focus{outline:none !important;}
+.alpha-editor{
+  position:relative !important;
+  padding:0px !important;
+  border:none !important;
+  margin-bottom:10px !important;
+}
+.alpha-editor-tool{
+  border-top:1px solid #bbb !important;
+  border-left:1px solid #bbb !important;
+  border-right:1px solid #bbb !important;
+  background-color:#ddd !important;
+  height:32px !important;
+  vertical-align:middle !important;
+  position:relative !important;
+  overflow-y:hidden !important;
+  overflow-x:auto !important;
+  white-space:pre !important;
+}
+.alpha-editor-tool-button sup,.alpha-editor-tool-button sub{line-height:11px !important;}
+.alpha-editor-tool-button:hover{background-color:#ccc !important;}
+.alpha-editor-tool-button:focus{outline:none !important;}
+.alpha-editor-tool-button{
+  display:inline-block !important;
+  width:32px !important;
+  height:32px !important;
+  line-height:32px !important;
+  text-align:center !important;
+  vertical-align:middle;
+  font-weight:bold !important;
+  border:0px none !important;
+  border-right:1px solid #bbb !important;
+  overflow:hidden !important;
+  white-space:pre !important;
+  cursor:default !important;
+  user-select:none !important;
+  -moz-user-select:none !important;
+  -webkit-user-select:none !important;
+}
+.alpha-editor-tool-button-separator{
+  width:16px !important;
+  background-color:#bbb !important;
+  color:#bbb !important;
+}
+.alpha-editor-preview{
+  position:relative !important;
+  border:1px solid #bbb !important;
+  background-color:#fff !important;
+  z-index:1 !important;
+  padding:5px !important;
+  overflow-x:hidden !important;
+  overflow-y:auto !important;
+  height:300px;
+}
+.alpha-editor-preview-view{
+  position:absolute !important;
+  z-index:3 !important;
+  width:calc(100% - 0px) !important;
+  top:32px !important;
+}
+.alpha-editor-preview-about{
+  text-align:center !important;
+  padding:100px 30px !important;
+  position:absolute !important;
+  z-index:4 !important;
+  top:32px !important;
+  width:100% !important;
+  white-space:pre !important;
+  font-style:italic !important;
+  line-height:32px !important;
+  font-size:16px !important;
+  color:#777 !important;
+}
+.alpha-editor-preview-about:before{
+  content:"\1d6fc\0a";
+  font-weight:bold !important;
+  font-size:48px !important;
+  font-style:normal !important;
+  line-height:48px !important;
+  width:100% !important;
+  color:#555 !important;
+}
+.alpha-editor-preview-about:after{
+  content:"Alpha Editor";
+  line-height:32px !important;
+  font-size:32px !important;x
+  width:100% !important;
+  color:#333 !important;
+}
+.alpha-editor-textarea:focus{outline:none !important;}
+.alpha-editor-textarea{
+  position:absolute !important;
+  border:1px solid #bbb !important;
+  background-color:#fff !important;
+  z-index:2 !important;
+  top:48px !important;
+  width:calc(100% - 0px) !important;
+  resize:none !important;
+  padding:5px !important;
+  opacity:0.07 !important;
+  color:#fff !important;
+  height:300px;
+}
+.alpha-editor-textarea-raw{
+  background-color:#333 !important;
+  color:#ddd !important;
+  opacity:1 !important;
+  font-family:monospace !important;
+  font-size:12px !important;
+  top:32px !important;
+}
+.alpha-external:after{
+  content:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAQElEQVR42qXKwQkAIAxDUUdxtO6/RBQkQZvSi8I/pL4BoGw/XPkh4XigPmsUgh0626AjRsgxHTkUThsG2T/sIlzdTsp52kSS1wAAAABJRU5ErkJggg==);
+}
+/* cursor */
+@keyframes fadecursor{from{opacity:1.0;}50%{opacity:0.1;}to{opacity:1.0;}}
+@-webkit-keyframes fadecursor{from{opacity:1.0;}50%{opacity:0.1;}to{opacity:1.0;}}
+.alpha-cursor-blink{animation:fadecursor 789ms infinite;-webkit-animation:fadecursor 789ms infinite;width:0px;margin:0px -2px !important;font-weight:bold !important;}
+.alpha-cursor-blink:before{content:"|";}
+.alpha-cursor-selection{
+  background-color:#ddd !important;
+}
+/* content preview */
+.alpha-editor-preview em{
+  font-style:italic !important;
+  font-weight:inherit !important;
+  color:inherit !important;
+  font-family:inherit !important;
+  line-height:inherit !important;
+}
+.alpha-editor-preview strong{
+  font-weight:bold !important;
+  font-style:inherit !important;
+  color:inherit !important;
+  font-family:inherit !important;
+  line-height:inherit !important;
+}
+.alpha-editor-preview del{
+  font-weight:inherit !important;
+  font-style:inherit !important;
+  color:inherit !important;
+  font-family:inherit !important;
+  line-height:inherit !important;
+}
+.alpha-editor-preview sup{
+  line-height:11px !important;
+  font-weight:inherit !important;
+  font-style:inherit !important;
+  color:inherit !important;
+  font-family:inherit !important;
+}
+.alpha-editor-preview code{
+  font-weight:inherit !important;
+  font-style:inherit !important;
+  color:#37b !important;
+  font-family:inherit !important;
+  line-height:inherit !important;
+}
+.alpha-editor-preview p{
+  font-weight:inherit !important;
+  font-style:inherit !important;
+  color:inherit !important;
+  font-family:inherit !important;
+  line-height:inherit !important;
+}
+.alpha-editor-preview h1,
+.alpha-editor-preview h2,
+.alpha-editor-preview h3,
+.alpha-editor-preview h4,
+.alpha-editor-preview h5,
+.alpha-editor-preview h6{
+  font-weight:bold !important;
+  font-style:inherit !important;
+  color:inherit !important;
+  font-family:inherit !important;
+  line-height:inherit !important;
+  font-size:inherit !important;
+  display:inline-block !important;
+  margin:0px !important;
+  padding:0px !important;
+}
+
+

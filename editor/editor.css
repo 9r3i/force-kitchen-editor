@@ -1,0 +1,10 @@
+.editor-text-warning{
+  background-color:#fff !important;
+  height:auto !important;
+  min-height:50px !important;
+  margin-top:20px !important;
+}
+.editor-buttons button,
+.editor-buttons select{
+  margin-right:10px;
+}
