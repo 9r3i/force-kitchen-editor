@@ -5,6 +5,7 @@
  * @requires ForceWebsite, Alpha, TinyMCE, CKEditor
  */
 function editor(param){
+this.version='1.1.0';
 this.pages=[
   'new',
   'edit',
@@ -12,10 +13,14 @@ this.pages=[
 ];
 this.plug=null;
 this.id=null;
+this.root=null;
 /* init */
 this.init=function(plug,id){
   this.plug=plug;
   this.id=typeof id==='string'?id:'kitchen-textarea';
+  this.root=plug.hosts.hasOwnProperty('editor')
+      ?plug.hosts.editor
+      :plug.root;
   var active=localStorage.getItem('editor-active');
   if(!active){return;}
   if(active=='alpha'){
@@ -107,11 +112,12 @@ this.isContentReady=function(){
 this.ckeditorInit=function(plug){
   clearTimeout(window.EDITOR_TIMEOUT);
   var _this=this,
+  kkey=ForceWebsite.config.kitchen.key,
   epath='/editor/ckeditor/ckeditor.js';
-  if(ForceWebsite.query.hasOwnProperty(ForceWebsite.config.kitchen.key)
-    &&this.pages.indexOf(ForceWebsite.query.kitchen)>=0){
+  if(ForceWebsite.query.hasOwnProperty(kkey)
+    &&this.pages.indexOf(ForceWebsite.query[kkey])>=0){
     if(typeof alpha!=='object'||alpha===null){
-      plug.Force.loadScriptFile(plug.root+epath);
+      plug.Force.loadScriptFile(this.root+epath);
     }
     this.ckeditorReady(r=>{
       var ed=CKEDITOR.replace(_this.id),
@@ -158,11 +164,12 @@ this.ckeditorReady=function(cb,i){
 this.alphaInit=function(plug){
   clearTimeout(window.EDITOR_TIMEOUT);
   var _this=this,
+  kkey=ForceWebsite.config.kitchen.key,
   epath='/editor/alpha/alpha.js';
-  if(ForceWebsite.query.hasOwnProperty(ForceWebsite.config.kitchen.key)
-    &&this.pages.indexOf(ForceWebsite.query.kitchen)>=0){
+  if(ForceWebsite.query.hasOwnProperty(kkey)
+    &&this.pages.indexOf(ForceWebsite.query[kkey])>=0){
     if(typeof alpha!=='object'||alpha===null){
-      plug.Force.loadScriptFile(plug.root+epath);
+      plug.Force.loadScriptFile(this.root+epath);
     }
     this.alphaReady(r=>{
       var ed=alpha.editor(_this.id);
@@ -191,11 +198,12 @@ this.alphaReady=function(cb,i){
 this.tinymceInit=function(plug){
   clearTimeout(window.EDITOR_TIMEOUT);
   var _this=this,
+  kkey=ForceWebsite.config.kitchen.key,
   epath='/editor/tinymce/tinymce.min.js';
-  if(ForceWebsite.query.hasOwnProperty(ForceWebsite.config.kitchen.key)
-    &&this.pages.indexOf(ForceWebsite.query.kitchen)>=0){
+  if(ForceWebsite.query.hasOwnProperty(kkey)
+    &&this.pages.indexOf(ForceWebsite.query[kkey])>=0){
     if(typeof tinymce!=='object'||tinymce===null){
-      plug.Force.loadScriptFile(plug.root+epath);
+      plug.Force.loadScriptFile(this.root+epath);
     }
     this.tinymceReady(r=>{
       if(!r){return;}
